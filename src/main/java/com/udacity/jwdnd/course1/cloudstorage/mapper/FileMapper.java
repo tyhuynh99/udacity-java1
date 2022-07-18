@@ -18,14 +18,14 @@ public interface FileMapper {
     int insert(File file);
 
     @Select("SELECT * FROM FILES WHERE userid = #{userid}")
-    List<File> getAll(int userid);
+    List<File> findAll(int userid);
 
     @Select("SELECT * FROM FILES WHERE filename = #{filename}")
-    File getFileByFilename(String filename);
+    File findByFilename(String filename);
 
     @Select("SELECT * FROM FILES WHERE fileId = #{fileId}")
-    File getFileByFileId(int fileId);
+    File findByFileId(int fileId);
 
     @Delete("DELETE FROM FILES WHERE fileId = #{fileId}")
-    Integer deleteFileByFileId(int fileId);
+    Integer deleteByFileId(int fileId);
 }

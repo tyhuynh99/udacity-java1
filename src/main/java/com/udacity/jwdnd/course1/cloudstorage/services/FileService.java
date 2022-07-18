@@ -34,20 +34,20 @@ public class FileService {
         return fileMapper.insert(file);
     }
 
-    public List<File> getAll() {
-        return fileMapper.getAll(getCurrentUserId());
+    public List<File> findAll() {
+        return fileMapper.findAll(getCurrentUserId());
     }
 
     public boolean isFilenameAvailable(String filename) {
-        return fileMapper.getFileByFilename(filename) == null;
+        return fileMapper.findByFilename(filename) == null;
     }
 
-    public File getFileByFileId(int fileId) {
-        return fileMapper.getFileByFileId(fileId);
+    public File findByFileId(int fileId) {
+        return fileMapper.findByFileId(fileId);
     }
 
-    public Integer deleteFileByFileId(int fileId){
-        return fileMapper.deleteFileByFileId(fileId);
+    public Integer deleteByFileId(int fileId){
+        return fileMapper.deleteByFileId(fileId);
     }
 
     private int getCurrentUserId() {

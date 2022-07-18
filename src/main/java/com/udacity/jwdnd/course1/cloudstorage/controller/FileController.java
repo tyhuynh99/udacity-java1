@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,7 +64,7 @@ public class FileController {
     @GetMapping()
     public void handleDownloadFile(HttpServletResponse response, Model model, @RequestParam("fileId") String fileId) {
         try {
-            File file = service.getFileByFileId(Integer.parseInt(fileId));
+            File file = service.findByFileId(Integer.parseInt(fileId));
             if (file == null) {
                 model.addAttribute("uploadError", "File is not existed. Please try again.");
                 loadAllFiles(model);
@@ -86,7 +85,7 @@ public class FileController {
     private String handleDeleteFile(Model model, @RequestParam("fileId") String fileId) {
         String uploadSuccess = "Delete file success";
         String uploadError = null;
-        if (service.deleteFileByFileId(Integer.parseInt(fileId)) == null) {
+        if (service.deleteByFileId(Integer.parseInt(fileId)) < 0) {
             uploadError = "File is not existed. Please try again.";
         }
 
@@ -102,7 +101,7 @@ public class FileController {
     }
 
     private void loadAllFiles(Model model) {
-        List<File> files = service.getAll();
+        List<File> files = service.findAll();
         model.addAttribute("files", files);
     }
 }

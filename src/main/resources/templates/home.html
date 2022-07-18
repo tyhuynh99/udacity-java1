@@ -63,16 +63,6 @@
                             <tbody>
                                 <tr th:each="file : ${files}">
                                     <td>
-                                        <!-- <form action="#" th:action="@{/file-upload}" method="GET">
-                                            <button type="submit" class="btn btn-success">View</button>
-                                            <input type="hidden" name="fileId" th:value="${file.getFileId()}" />
-                                        </form> -->
-<!-- 
-                                        <form action="#" th:action="@{'/file-upload}/{id}'(id=)" th:method="delete">
-                                            <button type="submit" class="btn btn-success">Delete</button>
-                                            <input type="hidden" name="_method" value="delete" />
-                                            <input type="hidden" name="fileId" th:value="${file.getFileId()}" />
-                                        </form> -->
                                         <a th:href="@{/file-upload(fileId=${file.fileId})}" class="btn btn-success">View</a>
                                         <a th:href="@{/file-upload/delete(fileId=${file.fileId})}" class="btn btn-danger">Delete</a>
                                     </td>
@@ -98,13 +88,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr th:each="note : ${notes}">
                                     <td>
                                         <button type="button" class="btn btn-success">Edit</button>
                                         <a class="btn btn-danger">Delete</a>
                                     </td>
-                                    <th scope="row">Example Note Title</th>
-                                    <td>Example Note Description </td>
+                                    <th scope="row" th:text="${note.getNoteTitle()}"></th>
+                                    <td th:text="${note.getNoteDescription()}"></td>
                                 </tr>
                             </tbody>
                         </table>
