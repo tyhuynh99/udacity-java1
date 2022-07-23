@@ -9,6 +9,13 @@ public class Note {
     public Note() {
     }
 
+    public Note(String noteTitle, String noteDescription, int userid) {
+        this.noteTitle = noteTitle;
+        this.noteDescription = noteDescription;
+        this.userid = userid;
+    }
+    
+
     public Note(int noteId, String noteTitle, String noteDescription, int userid) {
         this.noteId = noteId;
         this.noteTitle = noteTitle;
@@ -16,11 +23,11 @@ public class Note {
         this.userid = userid;
     }
 
-    public int getNoteId() {
+    public int getNoteid() {
         return noteId;
     }
 
-    public void setNoteId(int noteId) {
+    public void setNoteid(int noteId) {
         this.noteId = noteId;
     }
 
@@ -40,11 +47,11 @@ public class Note {
         this.noteDescription = noteDescription;
     }
 
-    public int getUserid() {
+    public int getUserId() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserId(int userid) {
         this.userid = userid;
     }
 

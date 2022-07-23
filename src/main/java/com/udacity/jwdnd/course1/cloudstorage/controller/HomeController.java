@@ -22,8 +22,12 @@ public class HomeController {
 
     @GetMapping()
     public String getHomePage(Model model) {
-        model.addAttribute("files", fileService.findAll());
-        model.addAttribute("notes", noteService.findAll());
+        getDataAllPage(model);
         return "home";
+    }
+
+    public void getDataAllPage(Model model){
+        model.addAttribute("files", fileService.findAll());
+        model.addAttribute("notes", noteService.findAll()); 
     }
 }

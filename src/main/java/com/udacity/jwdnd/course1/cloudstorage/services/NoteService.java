@@ -33,6 +33,15 @@ public class NoteService {
         return mapper.deleteById(noteId);
     }
 
+    public int createNote(String noteId, String title, String description) {
+        if (noteId.isEmpty()) {
+            Note note = new Note(title, description, getCurrentUserId());
+            return mapper.insert(note);
+        } else {
+            return mapper.update(title, description, Integer.parseInt(noteId));
+        }
+    }
+
     private int getCurrentUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = (String) authentication.getPrincipal();
